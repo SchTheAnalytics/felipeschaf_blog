@@ -1,32 +1,31 @@
 ---
 import type { ArchiveYear } from '../data/posts';
+import { getArchiveLabel } from '../data/posts';
 
 interface Props {
   archive: ArchiveYear[];
 }
 
 const { archive } = Astro.props;
+const months = archive.flatMap((year) =>
+  year.months.map((month) => ({
+    id: month.id,
+    label: getArchiveLabel(year.year, month.label),
+  })),
+);
 ---
 
 {
   archive.length > 0 && (
     <aside class="archive-nav" aria-label="Arquivo por ano e mes">
-      <h2>Arquivo</h2>
-      {archive.map((year) => (
-        <div class="archive-year">
-          <strong>{year.year}</strong>
-          <ul class="archive-months">
-            {year.months.map((month) => (
-              <li>
-                <a href={`#${month.id}`}>
-                  <span>{month.label}</span>
-                  <span aria-label={`${month.posts.length} posts`}>({month.posts.length})</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
+      <h2>Nesta página</h2>
+      <ul class="archive-months">
+        {months.map((month) => (
+          <li>
+            <a href={`#${month.id}`}>{month.label}</a>
+          </li>
+        ))}
+      </ul>
     </aside>
   )
 }

@@ -18,21 +18,45 @@ const { title, description, canonicalPath } = Astro.props;
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
     <SeoHead title={title} description={description} canonicalPath={canonicalPath} />
   </head>
   <body>
     <header class="site-header">
-      <a class="site-brand" href="/" aria-label={`${site.name} - Home`}>
-        <span class="site-mark" aria-hidden="true">FS</span>
-        <span>{site.name}</span>
+      <a class="site-brand" href="/" aria-label={`${site.headerName} - pagina inicial`}>
+        <span>{site.headerName}</span>
       </a>
-      <nav class="site-nav" aria-label="Navegacao principal">
-        {
-          site.navigation.map((item) => (
-            <a href={item.href}>{item.label}</a>
-          ))
-        }
-      </nav>
+      <div class="site-actions">
+        <nav class="site-nav" aria-label="Navegacao principal">
+          {
+            site.navigation.map((item) => (
+              <a href={item.href}>{item.label}</a>
+            ))
+          }
+        </nav>
+        <div class="site-search" aria-label="Busca visual indisponivel nesta versao">
+          <svg viewBox="0 0 20 20" aria-hidden="true">
+            <path
+              d="m14.2 13 3.1 3.1-1.2 1.2-3.1-3.1a7 7 0 1 1 1.2-1.2Zm-5.2.5A4.5 4.5 0 1 0 9 4.5a4.5 4.5 0 0 0 0 9Z"
+              fill="currentColor"
+            />
+          </svg>
+          <span>Buscar...</span>
+        </div>
+        <a class="github-link" href={site.githubUrl} aria-label="GitHub SchTheAnalytics" target="_blank" rel="noreferrer">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path
+              d="M12 .3a12 12 0 0 0-3.8 23.4c.6.1.8-.2.8-.6v-2.1c-3.3.7-4-1.6-4-1.6-.5-1.4-1.3-1.8-1.3-1.8-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1.1 1.8 2.8 1.3 3.5 1 .1-.8.4-1.3.8-1.6-2.6-.3-5.4-1.3-5.4-5.9 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.6.1-3.2 0 0 1-.3 3.3 1.2a11.4 11.4 0 0 1 6 0c2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.9.1 3.2.7.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.4 5.9.4.4.8 1.1.8 2.2v3.3c0 .4.2.7.8.6A12 12 0 0 0 12 .3Z"
+              fill="currentColor"
+            />
+          </svg>
+        </a>
+      </div>
     </header>
     <main class="site-main">
       <slot />

@@ -2,7 +2,7 @@
 import ArchiveNav from '../components/ArchiveNav.astro';
 import PostList from '../components/PostList.astro';
 import { site } from '../data/site';
-import { getPublicPosts, groupPostsByArchive } from '../data/posts';
+import { getArchiveLabel, getPublicPosts, groupPostsByArchive } from '../data/posts';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const posts = await getPublicPosts();
@@ -14,7 +14,6 @@ const archive = groupPostsByArchive(posts);
     <div class="content-column">
       <section class="page-intro" aria-labelledby="home-title">
         <h1 id="home-title">{site.name}</h1>
-        <p>{site.description}</p>
       </section>
 
       {
@@ -25,7 +24,7 @@ const archive = groupPostsByArchive(posts);
             year.months.map((month) => (
               <section class="archive-section" id={month.id} aria-labelledby={`${month.id}-title`}>
                 <h2 class="archive-heading" id={`${month.id}-title`}>
-                  {month.label} de {year.year}
+                  {getArchiveLabel(year.year, month.label)}
                 </h2>
                 <PostList posts={month.posts} />
               </section>

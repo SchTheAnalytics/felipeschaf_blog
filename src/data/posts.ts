@@ -30,6 +30,11 @@ export function getArchiveId(year: number, month: number) {
   return `arquivo-${year}-${String(month).padStart(2, '0')}`;
 }
 
+export function getArchiveLabel(year: number, monthLabel: string) {
+  const normalizedMonth = `${monthLabel.charAt(0).toLocaleUpperCase('pt-BR')}${monthLabel.slice(1)}`;
+  return `${year} - ${normalizedMonth}`;
+}
+
 export async function getPublicPosts() {
   const posts = await getCollection('posts');
   assertUniqueSlugs(posts);

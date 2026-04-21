@@ -1,13 +1,13 @@
 export const site = {
-  name: 'Felipe Schaf',
+  name: 'FelipeSchaf Blog',
+  headerName: 'SchTheAnalytics.com',
   description: 'Blog pessoal sobre tecnologia, escrita e aprendizado continuo.',
   locale: 'pt-BR',
   url: (import.meta.env.SITE_URL ?? 'https://felipeschaf.dev').replace(/\/$/, ''),
   author: 'Felipe Schaf',
+  githubUrl: 'https://github.com/SchTheAnalytics',
   navigation: [
-    { label: 'Home', href: '/' },
     { label: 'About', href: '/about/' },
-    { label: 'RSS', href: '/rss.xml' },
   ],
 };
 
