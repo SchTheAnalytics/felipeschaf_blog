@@ -1,5 +1,5 @@
 <!-- SPECKIT START -->
-For additional context about product principles, technologies to be used,
-project structure, shell commands, and other important information, read
-.specify/memory/constitution.md and the current feature plan when present.
+For product principles, read .specify/memory/constitution.md.
+For current feature technologies, structure, shell commands, and planning
+context, read specs/001-personal-blog-v1/plan.md.
 <!-- SPECKIT END -->

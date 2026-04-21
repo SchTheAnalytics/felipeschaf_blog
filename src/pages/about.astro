@@ -1,0 +1,21 @@
+---
+import { site } from '../data/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const description = 'Sobre Felipe Schaf e o contexto editorial deste blog pessoal.';
+---
+
+<BaseLayout title="About" description={description} canonicalPath="/about/">
+  <section class="about-page" aria-labelledby="about-title">
+    <h1 id="about-title">About</h1>
+    <p>
+      Este e um blog pessoal em pt-BR mantido por {site.author}. A proposta da V1 e
+      publicar posts simples, legiveis e versionados em Markdown.
+    </p>
+    <p>
+      A organizacao do conteudo privilegia ordem cronologica, leitura confortavel
+      e manutencao direta no repositorio, sem CMS, comentarios, busca ou painel
+      administrativo.
+    </p>
+  </section>
+</BaseLayout>

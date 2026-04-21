@@ -1,0 +1,41 @@
+---
+import SeoHead from '../components/SeoHead.astro';
+import { site } from '../data/site';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonicalPath: string;
+}
+
+const { title, description, canonicalPath } = Astro.props;
+---
+
+<!doctype html>
+<html lang={site.locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <SeoHead title={title} description={description} canonicalPath={canonicalPath} />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="site-brand" href="/" aria-label={`${site.name} - Home`}>
+        <span class="site-mark" aria-hidden="true">FS</span>
+        <span>{site.name}</span>
+      </a>
+      <nav class="site-nav" aria-label="Navegacao principal">
+        {
+          site.navigation.map((item) => (
+            <a href={item.href}>{item.label}</a>
+          ))
+        }
+      </nav>
+    </header>
+    <main class="site-main">
+      <slot />
+    </main>
+  </body>
+</html>
